@@ -65,6 +65,37 @@ COLLEGE_DATA = {
     ("timing", "sybcs"): "Star AI Database: The timing for S.Y.B.C.S classes is from **12:00 PM to 2:00 PM**.",
     
     ("math", "teacher"): "Star AI Database: The Mathematics teacher for S.Y.B.C.S is **Jayshree Kadam Ma'am**.",
+    # --- TIME TABLE & SCHEDULE (S.Y.B.Sc. CS) ---
+    
+    ("timetable", "schedule", "routine"): "STAR AI DATABASE: The Time Table for S.Y.B.Sc.(CS) (Sem-II) is active w.e.f 29/12/2025. You can ask for specific days like 'Monday schedule' or 'Practical batches'.",
+
+    # --- MONDAY ---
+    ("monday", "monday schedule", "mon lectures"): "STAR AI DATABASE: **Monday Schedule:**<br>• 08:30-11:30 AM: Practicals (DS: Batch-B, Math: Batch-A, Python: Batch-C, CN: Batch-D)<br>• 11:30-12:00 PM: Lunch Break<br>• 12:00-01:00 PM: AEC (Hindi)<br>• 01:00-02:00 PM: DS-II (Prof. K.D. Nirmal)<br>• 02:00-03:00 PM: CC",
+
+    # --- TUESDAY ---
+    ("tuesday", "tuesday schedule", "tue lectures"): "STAR AI DATABASE: **Tuesday Schedule:**<br>• 08:30-11:30 AM: Practicals (DS: Batch-C, Math: Batch-B, Python: Batch-D, CN: Batch-E)<br>• 11:30-12:00 PM: Lunch Break<br>• 12:00-01:00 PM: AEC (Hindi)<br>• 01:00-02:00 PM: DS-II (Prof. K.D. Nirmal)<br>• 02:00-03:00 PM: CC",
+
+    # --- WEDNESDAY ---
+    ("wednesday", "wednesday schedule", "wed lectures"): "STAR AI DATABASE: **Wednesday Schedule:**<br>• 08:30-11:30 AM: Practicals (DS: Batch-D, Elec: Batch-C, Python: Batch-E, CN: Batch-F)<br>• 11:30-12:00 PM: Lunch Break<br>• 12:00-01:00 PM: Math (JLK) / Electronics (USH)<br>• 01:00-02:00 PM: DBMS-II (Prof. K.D. Nirmal)",
+
+    # --- THURSDAY ---
+    ("thursday", "thursday schedule", "thu lectures"): "STAR AI DATABASE: **Thursday Schedule:**<br>• 08:30-11:30 AM: Practicals (DS: Batch-E, Elec: Batch-D, Python: Batch-F, CN: Batch-A)<br>• 11:30-12:00 PM: Lunch Break<br>• 12:00-01:00 PM: Math (JLK) / Electronics (USH)<br>• 01:00-02:00 PM: DBMS-II (Prof. K.D. Nirmal)",
+
+    # --- FRIDAY ---
+    ("friday", "friday schedule", "fri lectures"): "STAR AI DATABASE: **Friday Schedule:**<br>• 08:30-11:30 AM: Practicals (DS: Batch-F, Elec: Batch-E, Python: Batch-A, CN: Batch-B)<br>• 11:30-12:00 PM: Lunch Break<br>• 12:00-01:00 PM: OE English (Prof. M.H. Aher)<br>• 01:00-02:00 PM: CN (Prof. U.S. Hon)",
+
+    # --- SATURDAY ---
+    ("saturday", "saturday schedule", "sat lectures"): "STAR AI DATABASE: **Saturday Schedule:**<br>• 08:30-11:30 AM: Practicals (DS: Batch-A, Elec: Batch-F, Python: Batch-B, CN: Batch-C)<br>• 11:30-12:00 PM: Lunch Break<br>• 12:00-01:00 PM: OE English (Prof. M.H. Aher)<br>• 01:00-02:00 PM: Adv. Python (Prof. A.D. Aware)",
+
+    # --- PRACTICAL BATCHES LOGIC ---
+    ("practical batches", "batch details", "practicals"): "STAR AI DATABASE: **Practical Batches (8:30-11:30 AM):**<br>• Mon: DS(B), Math(A), Py(C), CN(D)<br>• Tue: DS(C), Math(B), Py(D), CN(E)<br>• Wed: DS(D), Elec(C), Py(E), CN(F)<br>• Thu: DS(E), Elec(D), Py(F), CN(A)<br>• Fri: DS(F), Elec(E), Py(A), CN(B)<br>• Sat: DS(A), Elec(F), Py(B), CN(C)",
+
+    # --- TEACHERS / FACULTY ---
+    ("nirmal", "kdn", "ds teacher", "dbms teacher"): "STAR AI DATABASE: Prof. K.D. Nirmal (KDN) teaches Data Structures (DS) and DBMS.",
+    ("kadam", "jlk", "math teacher"): "STAR AI DATABASE: Prof. J.L. Kadam (JLK) teaches Mathematics.",
+    ("hon", "ush", "electronics teacher", "cn teacher"): "STAR AI DATABASE: Prof. U.S. Hon (USH) teaches Electronics and Computer Networks (CN).",
+    ("aware", "ada", "python teacher"): "STAR AI DATABASE: Prof. A.D. Aware (ADA) teaches Advanced Python.",
+    ("aher", "mha", "english teacher"): "STAR AI DATABASE: Prof. M.H. Aher (MHA) teaches OE (English).",
 
     ("trusty",): "Star AI Database: The trusty of our college is **MR.Sandeep Dada Rohmare**."   
 }
@@ -115,3 +146,4 @@ def ask():
 if __name__ == '__main__':
 
     app.run(debug=True)
+
