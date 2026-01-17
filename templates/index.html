@@ -163,91 +163,40 @@ body, html {
     overscroll-behavior: none; /* Pull-to-refresh effect band */
 }
 
+/* Mobile ke liye special fixes */
 @media screen and (max-width: 768px) {
-    /* 1. Layout ko Column banao (Upar Sidebar, Niche Chat) */
     .container {
-        width: 100vw !important;
-        height: 100dvh !important; /* Full dynamic height */
-        margin: 0 !important;
-        border-radius: 0 !important;
         display: flex;
-        flex-direction: column !important;
-        overflow: hidden;
+        flex-direction: column !important; /* Sidebar aur Chat ek ke niche ek aayenge */
+        height: 100vh !important;
+        width: 100% !important;
     }
 
-    /* 2. Sidebar ko Chota Karo (Header jaisa) */
     .sidebar {
         width: 100% !important;
-        height: auto !important; /* Height fix */
-        padding: 10px 15px !important;
-        flex-shrink: 0;
+        height: auto !important;
+        padding: 10px !important;
         border-right: none !important;
         border-bottom: 1px solid var(--neon-blue);
-        
-        /* Flex row taaki Logo aur Button bagal-bagal aa sakein */
-        display: flex !important;
-        flex-direction: row !important;
-        justify-content: space-between;
-        align-items: center;
     }
 
-    /* 3. MOBILE PAR FAALTU CHEEZEIN HATAO (Magic Fix) */
-    .menu-label, .sidebar-option {
-        display: none !important; /* Ye buttons mobile par nahi dikhenge */
-    }
-
-    /* 4. Logo aur Button ko adjust karo */
-    .brand {
-        font-size: 1.2rem !important;
-        margin: 0 !important;
-        text-align: left;
-    }
-    
-    .college-selector-container {
-        margin-top: 0 !important;
-        width: auto !important;
-    }
-
-    .college-btn {
-        padding: 8px 15px !important;
-        font-size: 0.8rem !important;
-        width: auto !important;
-    }
-
-    /* 5. Chat Area ko Full Space do */
     .main-content {
         width: 100% !important;
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-        padding: 0 !important;
-        overflow: hidden;
+        height: 70% !important; /* Mobile par chat area bada dikhega */
     }
 
     #chatBox {
-        flex-grow: 1;
-        width: 100% !important;
-        padding: 15px !important;
-        overflow-y: auto;
-        margin-bottom: 0 !important;
+        height: calc(100% - 120px) !important;
+        padding: 10px !important;
     }
 
-    /* 6. Input Area Fix */
     .input-area {
-        width: 100% !important;
         padding: 10px !important;
-        background: var(--bg-deep);
-        flex-shrink: 0;
+        gap: 5px !important;
     }
-    
-    /* Dropdown Menu Mobile Fix */
-    .college-menu {
-        bottom: auto !important;
-        top: 50px !important; /* Menu ab niche khulega */
-        right: 10px !important;
-        left: auto !important;
-        width: 250px !important;
-        z-index: 1000;
+
+    h1 {
+        font-size: 1.2rem !important; /* Mobile par heading choti */
     }
 }
     </style>
@@ -357,6 +306,7 @@ body, html {
 </body>
 
 </html>
+
 
 
 
