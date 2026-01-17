@@ -6,6 +6,7 @@
     <title>Star AI - Advanced System</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
     <style>
+        
         :root {
             --bg-deep: #02020a;
             --sidebar-bg: rgba(5, 5, 20, 0.95);
@@ -25,7 +26,7 @@
             background: var(--bg-deep);
             color: var(--text-color);
             height: 100vh;
-            overflow: hidden; /* Scroll lock */
+            overflow: hidden;
         }
 
         #starCanvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
@@ -33,11 +34,10 @@
         .app-container {
             display: flex;
             height: 100vh;
-            width: 100%;
             backdrop-filter: blur(5px);
         }
 
-        /* --- SIDEBAR --- */
+       
         .sidebar {
             width: 280px;
             background: var(--sidebar-bg);
@@ -46,7 +46,6 @@
             flex-direction: column;
             padding: 20px;
             box-shadow: 5px 0 20px rgba(0, 243, 255, 0.1);
-            z-index: 10;
         }
 
         .brand {
@@ -60,41 +59,42 @@
         }
 
         .menu-label { font-size: 0.8rem; color: #aaa; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
-        
-        .sidebar-option { 
-            padding: 12px; margin-bottom: 5px; border-radius: 8px; 
-            cursor: pointer; transition: 0.3s; display: flex; gap: 10px; 
-            background: rgba(255,255,255,0.03); 
-        }
+        .sidebar-option { padding: 12px; margin-bottom: 5px; border-radius: 8px; cursor: pointer; transition: 0.3s; display: flex; gap: 10px; background: rgba(255,255,255,0.03); }
         .sidebar-option:hover { background: rgba(0, 243, 255, 0.1); border-color: var(--neon-blue); }
         .sidebar-option.active { background: linear-gradient(90deg, rgba(0, 243, 255, 0.2), transparent); border-left: 3px solid var(--neon-blue); }
 
-        .college-selector-container { margin-top: auto; position: relative; }
+        
+        .college-selector-container {
+            margin-top: auto;
+            position: relative;
+        }
 
         .college-btn {
-            width: 100%; padding: 12px; background: linear-gradient(135deg, var(--neon-purple), var(--neon-blue)); 
-            border: none; border-radius: 5px; color: white; font-family: 'Orbitron'; cursor: pointer; transition: 0.3s;
+            width: 100%; padding: 12px; background: linear-gradient(135deg, var(--neon-purple), var(--neon-blue)); border: none; border-radius: 5px; color: white; font-family: 'Orbitron'; cursor: pointer; transition: 0.3s;
         }
-        
+        .college-btn:hover { box-shadow: 0 0 25px rgba(0, 243, 255, 0.6); }
+
         .college-menu {
-            position: absolute; bottom: 60px; left: 0; width: 100%; 
-            background: rgba(10, 10, 25, 0.95); border: var(--border-glow); border-radius: 10px; 
-            padding: 10px; display: none; flex-direction: column; gap: 5px; z-index: 100;
+            position: absolute; bottom: 60px; left: 0; width: 100%; background: rgba(10, 10, 25, 0.95); border: var(--border-glow); border-radius: 10px; padding: 10px; display: none; flex-direction: column; gap: 5px; animation: slideUp 0.3s ease;
         }
+        @keyframes slideUp { from {opacity:0; transform: translateY(20px);} to {opacity:1; transform: translateY(0);} }
+
+        .menu-item {
+            padding: 10px; background: rgba(255,255,255,0.05); color: #fff; cursor: pointer; border-radius: 5px; font-size: 0.9rem; display: flex; justify-content: space-between; align-items: center;
+        }
+        .menu-item:hover { background: rgba(0, 243, 255, 0.1); }
         
-        .menu-item { padding: 10px; background: rgba(255,255,255,0.05); color: #fff; cursor: pointer; border-radius: 5px; font-size: 0.9rem; display: flex; justify-content: space-between; align-items: center; }
         .status-dot { height: 8px; width: 8px; border-radius: 50%; display: inline-block; }
         .offline { background: var(--danger-red); box-shadow: 0 0 5px var(--danger-red); }
         .online { background: #00ff44; box-shadow: 0 0 5px #00ff44; }
         .normal-mode-dot { background: #fff; box-shadow: 0 0 5px #fff; }
 
-        /* --- MAIN CHAT --- */
+        
         .main-chat {
             flex: 1;
             display: flex;
             flex-direction: column;
             background: var(--chat-bg);
-            position: relative;
         }
 
         .chat-header {
@@ -103,72 +103,56 @@
             align-items: center;
             gap: 20px;
             border-bottom: 1px solid rgba(0, 243, 255, 0.1);
-            background: rgba(2, 2, 10, 0.8);
+            background: linear-gradient(90deg, rgba(0,0,0,0.2), transparent);
         }
 
-        .star-logo-svg { width: 50px; height: 50px; fill: var(--neon-blue); filter: drop-shadow(0 0 5px var(--neon-blue)); animation: elegantSpin 12s linear infinite; }
-        @keyframes elegantSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        
+        .star-logo-container {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-        .header-info h2 { margin: 0; font-family: 'Orbitron'; font-size: 1.5rem; color: var(--neon-blue); }
+        .star-logo-svg {
+            width: 100%;
+            height: 100%;
+            fill: var(--neon-blue); /* Base color of the star */
+            /* Subtle, sophisticated glow using SVG filters */
+            filter: drop-shadow(0 0 5px var(--neon-blue)) drop-shadow(0 0 15px var(--neon-purple));
+            /* Slow, elegant rotation animation */
+            animation: elegantSpin 12s linear infinite;
+        }
+
+        @keyframes elegantSpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .header-info h2 { margin: 0; font-family: 'Orbitron'; font-size: 1.5rem; color: var(--neon-blue); letter-spacing: 2px; }
         .header-info p { margin: 2px 0 0; font-size: 0.8rem; color: #00ff44; }
 
-        .chat-box { 
-            flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; 
-        }
-        
-        .message { max-width: 80%; padding: 15px 20px; font-size: 1rem; line-height: 1.5; border-radius: 12px; }
-        .bot-msg { align-self: flex-start; background: rgba(0, 243, 255, 0.05); border-left: 4px solid var(--neon-blue); color: #eee; }
-        .user-msg { align-self: flex-end; background: linear-gradient(135deg, rgba(188, 19, 254, 0.3), rgba(0,0,0,0.1)); border: 1px solid rgba(188, 19, 254, 0.5); color: #fff; }
+      
+        .chat-box { flex: 1; padding: 30px; overflow-y: auto; display: flex; flex-direction: column; gap: 20px; }
+        .message { max-width: 75%; padding: 15px 20px; font-size: 1rem; line-height: 1.5; animation: fadeIn 0.3s ease; border-radius: 12px; }
+        .bot-msg { align-self: flex-start; background: rgba(0, 243, 255, 0.05); border-left: 4px solid var(--neon-blue); border: 1px solid rgba(0, 243, 255, 0.2); }
+        .user-msg { align-self: flex-end; background: linear-gradient(135deg, rgba(188, 19, 254, 0.3), rgba(0,0,0,0.1)); border: 1px solid rgba(188, 19, 254, 0.5); }
 
-        .input-area {
-            padding: 15px; background: rgba(0, 0, 0, 0.8); display: flex; gap: 10px; 
-            border-top: 1px solid rgba(255, 255, 255, 0.05); align-items: center;
-        }
-
-        input { 
-            flex: 1; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(0, 243, 255, 0.3); 
-            padding: 12px 15px; color: var(--neon-blue); border-radius: 30px; outline: none; font-size: 1rem; 
-        }
+        .input-area { padding: 25px; background: rgba(0, 0, 0, 0.3); display: flex; gap: 15px; border-top: 1px solid rgba(255, 255, 255, 0.05); align-items: center; }
+        input { flex: 1; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(0, 243, 255, 0.3); padding: 15px 20px; color: var(--neon-blue); border-radius: 30px; outline: none; font-family: 'Roboto'; font-size: 1rem; }
+        input:focus { box-shadow: 0 0 20px rgba(0, 243, 255, 0.2); }
 
         .send-btn { 
-            width: 45px; height: 45px; border-radius: 50%; border: none; 
+            width: 50px; height: 50px; border-radius: 50%; border: none; 
             background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple)); 
-            color: white; cursor: pointer; display: flex; justify-content: center; align-items: center;
+            color: white; cursor: pointer; transition: 0.3s; 
+            display: flex; justify-content: center; align-items: center;
         }
-        .send-btn svg { width: 20px; height: 20px; fill: white; }
+        .send-btn:hover { box-shadow: 0 0 20px rgba(0, 243, 255, 0.6); transform: scale(1.1); }
+        .send-btn svg { width: 24px; height: 24px; fill: white; transform: translateX(-2px) translateY(2px); }
 
-        .typing { color: var(--neon-blue); margin-left: 20px; font-size: 0.8rem; display: none; padding-bottom: 5px;}
-
-        /* --- MOBILE FIXES (Magic Code) --- */
-        @media screen and (max-width: 768px) {
-            .app-container { flex-direction: column; }
-            
-            /* Sidebar becomes tiny header on mobile */
-            .sidebar {
-                width: 100%;
-                height: 60px;
-                padding: 10px 15px;
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-                border-right: none;
-                border-bottom: 1px solid var(--neon-blue);
-            }
-
-            .brand { font-size: 1.2rem; margin: 0; }
-            
-            /* Hide non-essential items on mobile to save space */
-            .menu-label, .sidebar-option, .college-selector-container, .header-info p { display: none; }
-            
-            .main-chat { height: calc(100vh - 60px); width: 100%; }
-            .chat-header { padding: 10px; justify-content: center; }
-            .chat-header .header-info h2 { font-size: 1.1rem; }
-            .star-logo-svg { width: 30px; height: 30px; }
-            
-            .chat-box { padding: 10px; }
-            .message { max-width: 90%; font-size: 0.95rem; }
-            .input-area { padding: 10px; position: relative; bottom: 0; }
-        }
+        .typing { color: var(--neon-blue); margin-left: 30px; margin-bottom: 10px; font-family: 'Orbitron'; font-size: 0.8rem; display: none; }
     </style>
 </head>
 <body>
@@ -205,27 +189,27 @@
         <div class="main-chat">
             <div class="chat-header">
                 <div class="star-logo-container">
-                    <svg class="star-logo-svg" viewBox="0 0 100 100">
+                    <svg class="star-logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                         <path d="M50 0 L65 35 L100 50 L65 65 L50 100 L35 65 L0 50 L35 35 Z"></path>
                     </svg>
                 </div>
                 
                 <div class="header-info">
                     <h2>STAR AI</h2>
-                    <p id="systemStatus">● SYSTEM READY</p>
+                    <p id="systemStatus">● SYSTEM READY | SELECT MODE</p>
                 </div>
             </div>
 
             <div class="chat-box" id="chatBox">
                 <div class="message bot-msg">
-                    Greetings. I am Star AI. <br>System is ready.
+                    Greetings. I am Star AI. Please select a mode from the System Selection menu to begin.
                 </div>
             </div>
             
             <div class="typing" id="typingIndicator">STAR AI IS THINKING...</div>
 
             <div class="input-area">
-                <input type="text" id="userInput" placeholder="Ask Star..." onkeypress="handleEnter(event)" autocomplete="off">
+                <input type="text" id="userInput" placeholder="Ask anything to Star..." onkeypress="handleEnter(event)" autocomplete="off">
                 <button class="send-btn" onclick="sendMessage()">
                     <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path></svg>
                 </button>
@@ -234,77 +218,43 @@
     </div>
 
     <script>
-        // Star Animation
+        
         const canvas = document.getElementById('starCanvas');
         const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-        let stars = []; 
-        for(let i=0;i<100;i++) stars.push({x:Math.random()*canvas.width, y:Math.random()*canvas.height, size:Math.random()*1.5, speed:Math.random()*0.5+0.2});
-        
-        function animate(){ 
-            ctx.clearRect(0,0,canvas.width,canvas.height); // Better cleanup
-            ctx.fillStyle='white'; 
-            stars.forEach(s=>{
-                s.y-=s.speed;
-                if(s.y<0)s.y=canvas.height;
-                ctx.beginPath();ctx.arc(s.x,s.y,s.size,0,Math.PI*2);ctx.fill();
-            }); 
-            requestAnimationFrame(animate); 
-        }
+        canvas.width = window.innerWidth; height = window.innerHeight;
+        let stars = []; for(let i=0;i<150;i++) stars.push({x:Math.random()*canvas.width, y:Math.random()*canvas.height, size:Math.random()*1.5, speed:Math.random()*0.5+0.2});
+        function animate(){ ctx.fillStyle='rgba(2,2,10,0.3)'; ctx.fillRect(0,0,canvas.width,canvas.height); ctx.fillStyle='white'; stars.forEach(s=>{s.y-=s.speed;if(s.y<0)s.y=canvas.height;ctx.beginPath();ctx.arc(s.x,s.y,s.size,0,Math.PI*2);ctx.fill();}); requestAnimationFrame(animate); }
         animate();
 
-        // UI Logic
         const menu = document.getElementById('collegeMenu');
         const mainBtn = document.getElementById('mainCollegeBtn');
         const statusText = document.getElementById('systemStatus');
         const inputField = document.getElementById('userInput');
 
         function toggleMenu() { menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex'; }
-        
         function selectNormalMode() {
-            toggleMenu(); mainBtn.innerText = "● NORMAL MODE"; statusText.innerHTML = "● GENERAL AI PROTOCOL"; statusText.style.color = "#fff";
-            appendMessage(`<strong>MODE SWITCH:</strong> General AI Mode Activated.`, 'bot-msg');
+            toggleMenu(); mainBtn.innerText = "● NORMAL MODE ACTIVE"; statusText.innerHTML = "● ONLINE | GENERAL AI PROTOCOL"; statusText.style.color = "#fff"; inputField.placeholder = "Ask anything to Star...";
+            appendMessage(`<strong>MODE SWITCH:</strong> General AI Mode Activated. You can ask me general questions like "Who are you?" or "Tell me a joke".`, 'bot-msg');
         }
         function selectWorking(name) {
-            toggleMenu(); mainBtn.innerText = "▶ K.J. SOMAIYA"; statusText.innerHTML = `● CONNECTED: ${name.toUpperCase()}`; statusText.style.color = "#00ff44";
-            appendMessage(`✅ <strong>DATABASE LOADED:</strong> Switched to ${name}.`, 'bot-msg');
+            toggleMenu(); mainBtn.innerText = "▶ ACTIVE: K.J. SOMAIYA"; statusText.innerHTML = `● CONNECTED TO: ${name.toUpperCase()}`; statusText.style.color = "#00ff44"; inputField.placeholder = "Ask Star about your college...";
+            appendMessage(`✅ <strong>DATABASE LOADED:</strong> Switched to ${name}. Ask about Library, Classes, or Admissions.`, 'bot-msg');
         }
-        function selectDenied(name) { toggleMenu(); appendMessage(`⚠️ <strong>ERROR:</strong> Connection to ${name} timed out.`, 'bot-msg', true); }
-        
+        function selectDenied(name) { toggleMenu(); appendMessage(`⚠️ <strong>ERROR:</strong> Connection to ${name} timed out. Server offline.`, 'bot-msg', true); }
         document.addEventListener('click', function(e) { if(!mainBtn.contains(e.target) && !menu.contains(e.target)) menu.style.display = 'none'; });
 
         function handleEnter(e) { if (e.key === 'Enter') sendMessage(); }
-        
         async function sendMessage() {
-            const chatBox = document.getElementById('chatBox'); 
-            const typing = document.getElementById('typingIndicator'); 
-            const msg = inputField.value.trim(); 
-            if (!msg) return;
-            
-            appendMessage(msg, 'user-msg'); 
-            inputField.value = ''; 
-            chatBox.scrollTop = chatBox.scrollHeight; 
-            typing.style.display = 'block';
-            
+            const chatBox = document.getElementById('chatBox'); const typing = document.getElementById('typingIndicator'); const msg = inputField.value.trim(); if (!msg) return;
+            appendMessage(msg, 'user-msg'); inputField.value = ''; chatBox.scrollTop = chatBox.scrollHeight; typing.style.display = 'block';
             try {
                 const res = await fetch('/ask', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({message:msg}) });
-                const data = await res.json(); 
-                typing.style.display = 'none'; 
-                appendMessage(data.response, 'bot-msg');
-            } catch (err) { 
-                typing.style.display = 'none'; 
-                appendMessage("CONNECTION FAILURE.", 'bot-msg', true); 
-            }
+                const data = await res.json(); typing.style.display = 'none'; appendMessage(data.response, 'bot-msg');
+            } catch (err) { typing.style.display = 'none'; appendMessage("CONNECTION FAILURE.", 'bot-msg', true); }
             chatBox.scrollTop = chatBox.scrollHeight;
         }
-        
         function appendMessage(text, className, isError=false) {
-            const chatBox = document.getElementById('chatBox'); 
-            const div = document.createElement('div'); 
-            div.classList.add('message', className); 
-            if(isError) div.style.borderColor = 'var(--danger-red)'; 
-            div.innerHTML = text; 
-            chatBox.appendChild(div);
+            const chatBox = document.getElementById('chatBox'); const div = document.createElement('div'); div.classList.add('message', className); if(isError) div.style.borderColor = 'var(--danger-red)'; div.innerHTML = text; chatBox.appendChild(div);
         }
     </script>
 </body>
