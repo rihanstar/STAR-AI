@@ -153,43 +153,66 @@
         .send-btn svg { width: 24px; height: 24px; fill: white; transform: translateX(-2px) translateY(2px); }
 
         .typing { color: var(--neon-blue); margin-left: 30px; margin-bottom: 10px; font-family: 'Orbitron'; font-size: 0.8rem; display: none; }
-   /* Mobile Optimization */
+  /* Body ko lock karo taaki page hile nahi */
+body, html {
+    overflow-x: hidden; /* Left-Right scroll band */
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overscroll-behavior: none; /* Pull-to-refresh effect band */
+}
+
+/* Mobile App View */
 @media screen and (max-width: 768px) {
     .container {
-        display: flex;
-        flex-direction: column !important;
-        height: 100vh !important;
-        width: 100% !important;
+        width: 100vw !important; /* Screen ki full width */
+        height: 100dvh !important; /* Screen ki full height (dynamic) */
         margin: 0 !important;
         border-radius: 0 !important;
+        display: flex;
+        flex-direction: column !important;
+        overflow: hidden; /* Container ke bahar kuch nahi jayega */
     }
 
     .sidebar {
         width: 100% !important;
         height: auto !important;
-        padding: 15px !important;
+        padding: 10px !important;
+        flex-shrink: 0; /* Sidebar shrink nahi hoga */
         border-right: none !important;
         border-bottom: 1px solid var(--neon-blue);
-        flex-shrink: 0;
+        text-align: center;
+    }
+
+    .sidebar h2 {
+        font-size: 1.2rem;
+        margin: 0;
     }
 
     .main-content {
         width: 100% !important;
-        height: 100% !important;
-        padding: 10px !important;
-        flex-grow: 1;
+        flex-grow: 1; /* Baki bachi hui jagah lega */
+        display: flex;
+        flex-direction: column;
+        padding: 0 !important;
     }
 
     #chatBox {
-        height: calc(100vh - 220px) !important; /* Mobile height fix */
-        max-height: none !important;
-        overflow-y: auto;
-    }
-    
-    .input-area {
-        position: relative !important;
-        bottom: 0 !important;
+        flex-grow: 1;
         width: 100% !important;
+        padding: 15px !important;
+        overflow-y: auto; /* Sirf chat scroll hogi, page nahi */
+        margin-bottom: 0 !important;
+    }
+
+    .input-area {
+        width: 100% !important;
+        padding: 10px !important;
+        background: var(--bg-deep); /* Input area background fix */
+        position: relative;
+        bottom: 0;
+        flex-shrink: 0;
     }
 }
     </style>
@@ -299,3 +322,4 @@
 </body>
 
 </html>
+
