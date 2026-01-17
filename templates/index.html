@@ -163,40 +163,64 @@ body, html {
     overscroll-behavior: none; /* Pull-to-refresh effect band */
 }
 
-/* Mobile ke liye special fixes */
-@media screen and (max-width: 768px) {
+/* --- MOBILE REPAIR CODE (FINAL) --- */
+@media only screen and (max-width: 768px) {
+    /* 1. Layout ko Upar-Niche (Column) banao */
     .container {
         display: flex;
-        flex-direction: column !important; /* Sidebar aur Chat ek ke niche ek aayenge */
-        height: 100vh !important;
+        flex-direction: column !important;
         width: 100% !important;
+        height: 100vh !important;
+        margin: 0 !important;
+        overflow: hidden; /* Scroll rokne ke liye */
     }
 
+    /* 2. Sidebar ko sirf Header bana do */
     .sidebar {
         width: 100% !important;
-        height: auto !important;
-        padding: 10px !important;
+        height: 60px !important; /* Height fix */
+        flex-direction: row !important;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 15px !important;
         border-right: none !important;
         border-bottom: 1px solid var(--neon-blue);
+        flex-shrink: 0;
     }
 
+    /* 3. MOBILE PAR FAALTU BUTTONS CHUPA DO (Jagah Bachao) */
+    .sidebar h2, .menu-label, .sidebar-option, button.college-btn {
+        display: none !important; 
+    }
+    
+    /* Sirf Logo dikhao taaki user ko pata rahe ye Star AI hai */
+    .logo, .brand {
+        display: block !important;
+        font-size: 1.4rem !important;
+        margin: 0 !important;
+    }
+
+    /* 4. Chat Area ko Full Screen karo */
     .main-content {
         width: 100% !important;
-        height: 70% !important; /* Mobile par chat area bada dikhega */
+        flex-grow: 1;
+        height: auto !important;
+        padding: 0 !important;
     }
 
     #chatBox {
-        height: calc(100% - 120px) !important;
+        height: calc(100vh - 130px) !important; /* Input area ke liye jagah */
+        width: 100% !important;
         padding: 10px !important;
+        overflow-y: auto;
     }
 
     .input-area {
+        width: 100% !important;
         padding: 10px !important;
-        gap: 5px !important;
-    }
-
-    h1 {
-        font-size: 1.2rem !important; /* Mobile par heading choti */
+        position: absolute;
+        bottom: 0;
+        background: var(--bg-deep);
     }
 }
     </style>
@@ -306,6 +330,7 @@ body, html {
 </body>
 
 </html>
+
 
 
 
