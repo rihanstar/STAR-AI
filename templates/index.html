@@ -153,6 +153,45 @@
         .send-btn svg { width: 24px; height: 24px; fill: white; transform: translateX(-2px) translateY(2px); }
 
         .typing { color: var(--neon-blue); margin-left: 30px; margin-bottom: 10px; font-family: 'Orbitron'; font-size: 0.8rem; display: none; }
+   /* Mobile Optimization */
+@media screen and (max-width: 768px) {
+    .container {
+        display: flex;
+        flex-direction: column !important;
+        height: 100vh !important;
+        width: 100% !important;
+        margin: 0 !important;
+        border-radius: 0 !important;
+    }
+
+    .sidebar {
+        width: 100% !important;
+        height: auto !important;
+        padding: 15px !important;
+        border-right: none !important;
+        border-bottom: 1px solid var(--neon-blue);
+        flex-shrink: 0;
+    }
+
+    .main-content {
+        width: 100% !important;
+        height: 100% !important;
+        padding: 10px !important;
+        flex-grow: 1;
+    }
+
+    #chatBox {
+        height: calc(100vh - 220px) !important; /* Mobile height fix */
+        max-height: none !important;
+        overflow-y: auto;
+    }
+    
+    .input-area {
+        position: relative !important;
+        bottom: 0 !important;
+        width: 100% !important;
+    }
+}
     </style>
 </head>
 <body>
@@ -258,4 +297,5 @@
         }
     </script>
 </body>
+
 </html>
