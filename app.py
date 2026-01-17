@@ -1,9 +1,10 @@
 from flask import Flask, render_template, request, jsonify
+import os
 import time
 import google.generativeai as genai
 
 app = Flask(__name__)
-GENAI_API_KEY = "AIzaSyAFyr1TfZovl8zO_djq_hf_rkvzqIjSk-Q"
+GENAI_API_KEY = os.getenv("GEMINI_API_KEY")
 
 active_model = None
 
@@ -112,4 +113,5 @@ def ask():
     return jsonify({"response": answer})
 
 if __name__ == '__main__':
+
     app.run(debug=True)
