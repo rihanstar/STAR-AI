@@ -32,12 +32,12 @@ COLLEGE_DATA = {
     • **Sat:** DS(A), Elec(F), Py(B), CN(C)""",
 
     # --- DAILY SCHEDULE ---
-    ("monday",): "STAR AI DATABASE: **Monday Schedule:**<br>• 08:30-11:30: Practicals (DS-B, Math-A, Py-C, CN-D)<br>• 12:00-01:00: AEC (Hindi)<br>• 01:00-02:00: DS-II (Nirmal Sir)<br>• 02:00-03:00: CC",
-    ("tuesday",): "STAR AI DATABASE: **Tuesday Schedule:**<br>• 08:30-11:30: Practicals (DS-C, Math-B, Py-D, CN-E)<br>• 12:00-01:00: AEC (Hindi)<br>• 01:00-02:00: DS-II (Nirmal Sir)<br>• 02:00-03:00: CC",
-    ("wednesday",): "STAR AI DATABASE: **Wednesday Schedule:**<br>• 08:30-11:30: Practicals (DS-D, Elec-C, Py-E, CN-F)<br>• 12:00-01:00: Math (JLK) / Elec (USH)<br>• 01:00-02:00: DBMS-II (Nirmal Sir)",
-    ("thursday",): "STAR AI DATABASE: **Thursday Schedule:**<br>• 08:30-11:30: Practicals (DS-E, Elec-D, Py-F, CN-A)<br>• 12:00-01:00: Math (JLK) / Elec (USH)<br>• 01:00-02:00: DBMS-II (Nirmal Sir)",
-    ("friday",): "STAR AI DATABASE: **Friday Schedule:**<br>• 08:30-11:30: Practicals (DS-F, Elec-E, Py-A, CN-B)<br>• 12:00-01:00: OE English (Aher Sir)<br>• 01:00-02:00: CN (Hon Sir)",
-    ("saturday",): "STAR AI DATABASE: **Saturday Schedule:**<br>• 08:30-11:30: Practicals (DS-A, Elec-F, Py-B, CN-C)<br>• 12:00-01:00: OE English (Aher Sir)<br>• 01:00-02:00: Adv. Python (Aware Sir)",
+    ("monday",): "STAR AI DATABASE: **Monday Schedule:**<br>• 08:30-11:30: Practicals (DS-B, Math-A, Py-C, CN-D)<br>• 12:00-01:00: AEC (Hindi)<br>• 01:00-02:00: DS-II (Nirmal Mam)<br>• 02:00-03:00: CC",
+    ("tuesday",): "STAR AI DATABASE: **Tuesday Schedule:**<br>• 08:30-11:30: Practicals (DS-C, Math-B, Py-D, CN-E)<br>• 12:00-01:00: AEC (Hindi)<br>• 01:00-02:00: DS-II (Nirmal Mam)<br>• 02:00-03:00: CC",
+    ("wednesday",): "STAR AI DATABASE: **Wednesday Schedule:**<br>• 08:30-11:30: Practicals (DS-D, Elec-C, Py-E, CN-F)<br>• 12:00-01:00: Math (JLK) / Elec (USH)<br>• 01:00-02:00: DBMS-II (Nirmal Mam)",
+    ("thursday",): "STAR AI DATABASE: **Thursday Schedule:**<br>• 08:30-11:30: Practicals (DS-E, Elec-D, Py-F, CN-A)<br>• 12:00-01:00: Math (JLK) / Elec (USH)<br>• 01:00-02:00: DBMS-II (Nirmal Mam)",
+    ("friday",): "STAR AI DATABASE: **Friday Schedule:**<br>• 08:30-11:30: Practicals (DS-F, Elec-E, Py-A, CN-B)<br>• 12:00-01:00: OE English (Aher Mam)<br>• 01:00-02:00: CN (Hon Sir)",
+    ("saturday",): "STAR AI DATABASE: **Saturday Schedule:**<br>• 08:30-11:30: Practicals (DS-A, Elec-F, Py-B, CN-C)<br>• 12:00-01:00: OE English (Aher Mam)<br>• 01:00-02:00: Adv. Python (Aware Sir)",
     
     ("timetable", "schedule"): "STAR AI DATABASE: **Timetable Active.** Ask for any day (e.g., 'Monday') or 'Practical Batches'."
 }
@@ -85,3 +85,4 @@ def ask():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
